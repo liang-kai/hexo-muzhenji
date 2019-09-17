@@ -3,26 +3,26 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 胡伟煌 
+title: 董小姐 
 subtitle: 个人博客
-author: 胡伟煌
+author: 董小姐
 language:
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://www.huweihuang.com/       # Note: don't forget to modify the CNAME file to your url
+url: http://www.laddydong.com/       # Note: don't forget to modify the CNAME file to your url
 root: /
 #permalink: :year/:month/:day/:title/
 permalink: :category/:title/
 permalink_defaults:
-  lang: en
+  lang: zh
 
 #Custom Setting Start
 
 # Site settings
-SEOTitle: 胡伟煌 | Blog
-email: e-mail_address
+SEOTitle: 董小姐
+email: lkaientan@gmail.com
 description: ""
 keyword: ""
 header-img: /img/header_img/home.jpg
@@ -36,7 +36,7 @@ signature-img: img/signature/BeanTechSign-white.png
 # RSS: false
 # weibo_username:     Demonbaneen
 # zhihu_username:     Demonbane
-github_username:    huweihuang
+github_username:    liang-kai
 # twitter_username:   Demonbane_x
 # facebook_username:  xxx
 # linkedin_username:  xxx
