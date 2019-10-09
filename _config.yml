@@ -89,11 +89,11 @@ featured-condition-size: 0              # A tag will be featured if the size of 
 ## Friends
 friends: [
     {
-        title: "CSDN Blog 胡伟煌",
+        title: "bilibili 小靓点点",
         href: "http://blog.csdn.net/huwh_"
     },
     {
-        title: "DockOne 胡伟煌",
+        title: "小靓点点",
         href: "http://dockone.io/people/胡伟煌"
     },
     {
@@ -231,6 +231,6 @@ sitemap:
 # branch: master
 deploy:
   type: git
-  repository: https://github.com/huweihuang/hexo-theme-huweihuang
+  repository: https://github.com/liang-kai/hexo-muzhenji
   branch: gh-pages
   message: Update CNAME
