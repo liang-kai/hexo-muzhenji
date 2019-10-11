@@ -58,8 +58,8 @@ anchorjs: true                          # if you want to customize anchor. check
 #Baidu Analytics
 ba_track_id: xxx
 # Google Analytics
-ga_track_id: 'UA-XXXXXXXX-X'          # Format: UA-xxxxxx-xx
-ga_domain: yoursite
+ga_track_id: ''          # Format: UA-xxxxxx-xx
+ga_domain: laddydong.com
 
 
 # Sidebar settings
