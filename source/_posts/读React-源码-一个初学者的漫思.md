@@ -41,6 +41,44 @@ module.exports = require('./lib/React');
 That's right-- only three lines of code, one of which is `'use strict';`,the other appears to be exporting a non-existent file in a non-existent directory. Once again, the resone for this mysterious file are answered by the Codebase Overview:
 > When we compile React for npm, a script copies all the modules to a flatten directory called `lib` and prepands all `require()` paths with `./`
 
-# A Brief Note On Haste
+## A Brief Note On Haste
 
-Navigating to [https://unpkg.com/react@15.4.1/lib](https://unpkg.com/react@15.4.1/lib), we can see that there is indeed a file named `React.js`,but from where did this file originate? The answer lies in Facebook's custom module system,*Haste*. *Haste* was developed to be convenients for projects with large codebases, so that files can be moved to different locations within a project without having to worry about specifying new relative file paths.
+Navigating to [https://unpkg.com/react@15.4.1/lib](https://unpkg.com/react@15.4.1/lib), we can see that there is indeed a file named `React.js`,but from where did this file originate? The answer lies in Facebook's custom module system,*Haste*. *Haste* was developed to be convenients for projects with large codebases, so that files can be moved to different locations within a project without having to worry about specifying new relative file paths. The key distinction between *Haste* and *Common.js*, however, is that all filenames within a *Haste* project must be unique. When a new file is created in Facebook project, Facebook requires that file incloud  a linsinc header. Within that header appears a line like `* @provideModule React` where the name following `@provideModule` should match the name of newly created file. So, in this case `@provideModule React` imports the React Module. This is how modules are created in `Haste`.
+
+## React.js
+
+Having global filenames makes finding file incredebly easy on Github and most text editors. Press `t` anywhere in React's repository, we can type *react.js* to search for the core React Module. Indeed, we find a file named *react.js* located in `src/isomorphic` as the third hit from the top.
+
+Navigating to `src/isomorphic/React.js` we finally see a javascript file that's more than three lines of code!
+
+```javascript
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @providesModule React
+ */
+```
+`Lines 1-10`:As I mentioned before, each source file in React requires a linsenc header. This lines contain infomation about license and are used by *Haste* to uniquily identify the module.
+
+---
+
+```javascript
+var ReactBaseClasses = require('ReactBaseClasses');
+var ReactChildren = require('ReactChildren');
+var ReactDOMFactories = require('ReactDOMFactories');
+var ReactElement = require('ReactElement');
+var ReactPropTypes = require('ReactPropTypes');
+var ReactVersion = require('ReactVersion');
+```
+
+`Line 14-21`: These line leverage *Haste* to import `React.js`'s module dependencies. The module required in here will ultimately help comprise React's top-level public API. We will dive into their code in a bit.
+
+```javascript
+var createReactClass = require('createClass');
+var onlyChild = require('onlyChild');
+```
+
+`Line 23-24`: These lines requires in two more 
