@@ -81,4 +81,25 @@ var createReactClass = require('createClass');
 var onlyChild = require('onlyChild');
 ```
 
-`Line 23-24`: These lines requires in two more 
+`Line 23-24`: These lines requires in two more modules that do not comprise the top-level API but are used within the React.js file itself. One interesting about the warning module: If you search the repository for it, you might be surprised to find that it doesn't exist in the React repository. Instead, it localed in Facebook's fbjs repository [here](https://github.com/facebook/fbjs/blob/master/packages/fbjs/src/__forks__/warning.js), which is inclouded as a dependency in React's repository. If you are curious, you can learn more about why it's kept in another repository [here](https://www.npmjs.com/package/fbjs)
+
+```javascript
+var createElement = ReactElement.createElement;
+var createFactory = ReactElement.createFactory;
+var cloneElement = ReactElement.cloneElement;
+```
+
+`[Lines 26_28](https://github.com/facebook/react/blob/master/src/isomorphic/React.js#L26-L28)`:The code serves in two purposes in my mind. 1)It creates a series of utility variables that are more expressive and less verbose than continuously accessing properties on the ReactElement object and 2) the newly recreated variables can safely ressigned in the development, without overwriting the modules' functionalities.
+
+---
+
+```javascript
+if (__DEV__) {
+  var ReactElementValidator = require('ReactElementValidator');
+  createElement = ReactElementValidator.createElement;
+  createFactory = ReactElementValidator.createFactory;
+  cloneElement = ReactElementValidator.cloneElement;
+}
+```
+
+[Lines 30-35](https://github.com/facebook/react/blob/master/src/isomorphic/React.js#L30-L35):
